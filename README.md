@@ -6,16 +6,14 @@
 
 Create code execution interaction flow.
 
-## Todo
+You may need to modify the style according to your own needs.
+
+- [Basic Vertical Layout](https://haiweilian.github.io/knowcess/examples/basic-vertical-layout.html)
+- [Basic Horizontal Layout](https://haiweilian.github.io/knowcess/examples/basic-horizontal-layout.html)
+
+#### Todo
 
 - [ ] Support auto play steps
 - [ ] Support keyboard shortcuts
 - [ ] Support source code scroll
 - [ ] Optimize animation effects
-
-## Examples
-
-You may need to modify the style according to your own needs.
-
-- [Basic Vertical Layout](https://haiweilian.github.io/knowcess/examples/basic-vertical-layout.html)
-- [Basic Horizontal Layout](https://haiweilian.github.io/knowcess/examples/basic-horizontal-layout.html)
