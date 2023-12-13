@@ -1,0 +1,43 @@
+{
+  "name": "knowcess",
+  "type": "module",
+  "space": "Knowcess",
+  "version": "0.0.1",
+  "description": "Create code execution interaction flow.",
+  "main": "dist/knowcess.umd.js",
+  "module": "dist/knowcess.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "release": "release-it"
+  },
+  "keywords": [
+    "knowcess",
+    "execute-process",
+    "interaction-process"
+  ],
+  "license": "MIT",
+  "author": "haiweilian@foxmail.com",
+  "bugs": "https://github.com/haiweilian/knowcess/issues",
+  "homepage": "https://github.com/haiweilian/knowcess#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haiweilian/knowcess.git"
+  },
+  "devDependencies": {
+    "@bfehub/eslint-config-typescript": "^2.0.0",
+    "@release-it/conventional-changelog": "^8.0.1",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "create-banner": "^2.0.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.1",
+    "release-it": "^17.0.1",
+    "rollup": "^4.8.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "typescript": "^5.3.3"
+  }
+}

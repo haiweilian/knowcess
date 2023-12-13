@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Horizontal Layout</title>
+    <link rel="stylesheet" href="./lib/knowcess.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.css" />
+    <style>
+      body {
+        margin: 0px;
+      }
+      body > h4 {
+        text-align: center;
+      }
+      #demo {
+        width: 1000px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>Basic Horizontal Layout</h4>
+    <div id="demo"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.js"></script>
+    <script>
+      const code = `const arr = []
+
+arr.push(1)
+
+Promise.resolve().then(() => {
+  arr.push(3)
+})
+
+setTimeout(() => {
+  arr.push(4)
+})
+
+setTimeout(() => {
+  arr.pop()
+  arr.shift()
+})
+
+arr.push(2)`
+      const html = Prism.highlight(code, Prism.languages.javascript, 'javascript')
+    </script>
+    <script type="module">
+      import Knowcess from './lib/knowcess.esm.js'
+
+      const knowcess = new Knowcess({
+        root: '#demo',
+        code: `<pre class="language-javascript"><code>${html}</code></pre>`,
+        direction: 'horizontal'
+      })
+      const arrStack = knowcess.createStack('Arr Data')
+
+      knowcess
+        .step(() => {
+          knowcess.showLine().moveLine(1).showCommentary('define `arr`')
+        })
+        .step(() => {
+          knowcess.hideCommentary().moveLine(3)
+          arrStack.push('Push `1`')
+        })
+        .step(() => {
+          knowcess.moveLine(18)
+          arrStack.push('Push `2`')
+        })
+        .step(() => {
+          knowcess.moveLine(6)
+          arrStack.push('Push `3`')
+        })
+        .step(() => {
+          knowcess.moveLine(10)
+          arrStack.push('Push `4`')
+        })
+        .step(() => {
+          knowcess.hideLine().showCommentary('current `arr` value `[1, 2, 3, 4]`')
+        })
+        .step(() => {
+          knowcess.hideCommentary().showLine().moveLine(14)
+          arrStack.pop()
+        })
+        .step(() => {
+          knowcess.moveLine(15)
+          arrStack.shift()
+        })
+        .step(() => {
+          knowcess.hideLine().showCommentary('current `arr` value `[2, 3]`')
+        })
+    </script>
+  </body>
+</html>
