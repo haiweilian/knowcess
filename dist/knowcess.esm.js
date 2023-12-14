@@ -5,7 +5,7 @@
  * Copyright 2023 haiweilian@foxmail.com
  * Released under the MIT license
  *
- * Date: 2023-12-13T09:01:50.531Z
+ * Date: 2023-12-14T08:10:01.942Z
  */
 
 const transition = (el, obj, duration, animate = true, easing = 'ease-in-out') => {
@@ -87,7 +87,18 @@ class KnowcessStack {
     push(text) {
         this.action((animate) => {
             const span = document.createElement('span');
-            span.textContent = text;
+            if (typeof text === 'string') {
+                span.textContent = text;
+            }
+            else {
+                span.textContent = text.text;
+                if (text.class) {
+                    span.className = text.class;
+                }
+                if (text.style) {
+                    Object.assign(span.style, text.style);
+                }
+            }
             this.stackValueElement.appendChild(span);
             return transition(span, { opacity: 1 }, 0.2, animate);
         });
@@ -277,6 +288,14 @@ class Knowcess {
         return this.action((animate) => {
             this.commentaryElement.textContent = '';
             return transition(this.commentaryElement, { opacity: 0 }, 0.2, animate);
+        });
+    }
+    /**
+     * Update commentary mask
+     */
+    updateCommentary(text) {
+        return this.action((animate) => {
+            this.commentaryElement.textContent = text;
         });
     }
 }

@@ -23,7 +23,11 @@ export declare class KnowcessStack {
      * Add element at the end of stack
      * @param text
      */
-    push(text: string): void;
+    push(text: string | {
+        text: string;
+        class?: string;
+        style?: Record<string, any>;
+    }): void;
     /**
      * Remove element at the end of stack
      */

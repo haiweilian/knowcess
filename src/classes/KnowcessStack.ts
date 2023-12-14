@@ -60,10 +60,20 @@ export class KnowcessStack {
    * Add element at the end of stack
    * @param text
    */
-  push(text: string) {
+  push(text: string | { text: string; class?: string; style?: Record<string, any> }) {
     this.action((animate) => {
       const span = document.createElement('span')
-      span.textContent = text
+      if (typeof text === 'string') {
+        span.textContent = text
+      } else {
+        span.textContent = text.text
+        if (text.class) {
+          span.className = text.class
+        }
+        if (text.style) {
+          Object.assign(span.style, text.style)
+        }
+      }
       this.stackValueElement.appendChild(span)
       return transition(span, { opacity: 1 }, 0.2, animate)
     })

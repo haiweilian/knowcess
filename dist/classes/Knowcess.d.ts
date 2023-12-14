@@ -74,4 +74,8 @@ export declare class Knowcess {
      * Hide commentary mask
      */
     hideCommentary(): this;
+    /**
+     * Update commentary mask
+     */
+    updateCommentary(text: string): this;
 }

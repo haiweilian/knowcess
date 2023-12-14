@@ -193,6 +193,15 @@ export class Knowcess {
       return transition(this.commentaryElement, { opacity: 0 }, 0.2, animate)
     })
   }
+
+  /**
+   * Update commentary mask
+   */
+  updateCommentary(text: string) {
+    return this.action((animate) => {
+      this.commentaryElement.textContent = text
+    })
+  }
 }
 
 function template(options: KnowcessOptions) {
