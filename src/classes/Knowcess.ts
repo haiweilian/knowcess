@@ -94,6 +94,13 @@ export class Knowcess {
   }
 
   /**
+   * Skip [num] step
+   */
+  skip(num: number) {
+    this.currentStep += num
+  }
+
+  /**
    * Add action in current step
    * @param fn
    */

@@ -5,7 +5,7 @@
  * Copyright 2023 haiweilian@foxmail.com
  * Released under the MIT license
  *
- * Date: 2023-12-14T08:10:01.942Z
+ * Date: 2023-12-15T04:45:55.514Z
  */
 
 const transition = (el, obj, duration, animate = true, easing = 'ease-in-out') => {
@@ -195,6 +195,12 @@ class Knowcess {
         this.steps.push([]);
         fn();
         return this;
+    }
+    /**
+     * Skip [num] step
+     */
+    skip(num) {
+        this.currentStep += num;
     }
     /**
      * Add action in current step

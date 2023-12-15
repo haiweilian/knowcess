@@ -34,6 +34,10 @@ export declare class Knowcess {
      */
     step(fn: Function): this;
     /**
+     * Skip [num] step
+     */
+    skip(num: number): void;
+    /**
      * Add action in current step
      * @param fn
      */
