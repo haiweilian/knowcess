@@ -16,6 +16,7 @@ export declare class Knowcess {
     private commentaryElement;
     private queue;
     private steps;
+    private skipStep;
     private currentStep;
     stacks: KnowcessStack[];
     constructor(options: KnowcessOptions);

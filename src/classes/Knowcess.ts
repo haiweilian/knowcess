@@ -28,6 +28,7 @@ export class Knowcess {
 
   private queue: Promise<any> = Promise.resolve()
   private steps: Function[][] = []
+  private skipStep = 0
   private currentStep = 0
 
   public stacks: KnowcessStack[] = []
@@ -64,6 +65,7 @@ export class Knowcess {
    * Reset state
    */
   reset() {
+    this.skipStep = 0
     this.currentStep = 0
     this.codeElement.style.transform = ''
     this.lineElement.style.opacity = ''
@@ -97,6 +99,7 @@ export class Knowcess {
    * Skip [num] step
    */
   skip(num: number) {
+    this.skipStep = num
     this.currentStep += num
   }
 
@@ -141,6 +144,11 @@ export class Knowcess {
    */
   forward(animate = true) {
     this.queue = this.queue.then(() => {
+      if (!animate && this.skipStep) {
+        this.skipStep--
+        return Promise.all([])
+      }
+
       const step = this.steps[this.currentStep]
       if (step) {
         this.currentStep++

@@ -5,7 +5,7 @@
  * Copyright 2023 haiweilian@foxmail.com
  * Released under the MIT license
  *
- * Date: 2023-12-15T04:45:55.514Z
+ * Date: 2023-12-15T06:40:18.625Z
  */
 
 (function (global, factory) {
@@ -149,6 +149,7 @@
         commentaryElement;
         queue = Promise.resolve();
         steps = [];
+        skipStep = 0;
         currentStep = 0;
         stacks = [];
         constructor(options) {
@@ -176,6 +177,7 @@
          * Reset state
          */
         reset() {
+            this.skipStep = 0;
             this.currentStep = 0;
             this.codeElement.style.transform = '';
             this.lineElement.style.opacity = '';
@@ -206,6 +208,7 @@
          * Skip [num] step
          */
         skip(num) {
+            this.skipStep = num;
             this.currentStep += num;
         }
         /**
@@ -247,6 +250,10 @@
          */
         forward(animate = true) {
             this.queue = this.queue.then(() => {
+                if (!animate && this.skipStep) {
+                    this.skipStep--;
+                    return Promise.all([]);
+                }
                 const step = this.steps[this.currentStep];
                 if (step) {
                     this.currentStep++;
